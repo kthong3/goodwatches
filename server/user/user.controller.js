@@ -23,12 +23,14 @@ function get(req, res) {
 /**
  * Create new user
  * @property {string} req.body.username - The username of user.
+ * @property {string} req.body.emailAddress - The emailAddress of user.
  * @property {string} req.body.mobileNumber - The mobileNumber of user.
  * @returns {User}
  */
 function create(req, res, next) {
   const user = new User({
     username: req.body.username,
+    emailAddress: req.body.emailAddress,
     mobileNumber: req.body.mobileNumber
   });
 
