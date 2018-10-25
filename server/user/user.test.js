@@ -21,6 +21,7 @@ after((done) => {
 describe('## User APIs', () => {
   let user = {
     username: 'KK123',
+    emailAddress: 'email@email.com',
     mobileNumber: '1234567890'
   };
 
@@ -47,6 +48,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal(user.username);
+          expect(res.body.emailAddress).to.equal(user.emailAddress);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
           done();
         })
@@ -74,6 +76,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal('KK');
+          expect(res.body.emailAddress).to.equal(user.emailAddress);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
           done();
         })
@@ -113,6 +116,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal('KK');
+          expect(res.body.emailAddress).to.equal(user.emailAddress);
           expect(res.body.mobileNumber).to.equal(user.mobileNumber);
           done();
         })
