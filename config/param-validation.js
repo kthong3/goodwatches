@@ -26,5 +26,24 @@ module.exports = {
       username: Joi.string().required(),
       password: Joi.string().required()
     }
+  },
+
+  // POST /api/movies
+  createMovie: {
+    body: {
+      title: Joi.string().required(),
+      releaseDate: Joi.string().required()
+    }
+  },
+
+  // UPDATE /api/movies/:movieId
+  updateMovie: {
+    body: {
+      title: Joi.string().required(),
+      releaseDate: Joi.string().required()
+    },
+    params: {
+      movieId: Joi.string().hex().required()
+    }
   }
 };
