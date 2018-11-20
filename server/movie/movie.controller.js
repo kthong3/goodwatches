@@ -24,12 +24,14 @@ function get(req, res) {
  * Create new movie
  * @property {string} req.body.title - The title of movie.
  * @property {string} req.body.releaseDate - The releaseDate of movie.
+ * @property {array} req.body.genres - The genres of movie.
  * @returns {Movie}
  */
 function create(req, res, next) {
   const movie = new Movie({
     title: req.body.title,
-    releaseDate: req.body.releaseDate
+    releaseDate: req.body.releaseDate,
+    genres: req.body.genres
   });
 
   movie.save()
@@ -41,12 +43,14 @@ function create(req, res, next) {
  * Update existing movie
  * @property {string} req.body.title - The title of movie.
  * @property {string} req.body.releaseDate - The releaseDate of movie.
+ * @property {array} req.body.genres - The genres of movie.
  * @returns {Movie}
  */
 function update(req, res, next) {
   const movie = req.movie;
   movie.title = req.body.title;
   movie.releaseDate = req.body.releaseDate;
+  movie.genres = req.body.genres;
 
   movie.save()
     .then(savedMovie => res.json(savedMovie))
