@@ -4,6 +4,17 @@ const httpStatus = require('http-status');
 const APIError = require('../helpers/APIError');
 
 /**
+ * Genre Schema
+ */
+const GenreSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  }
+});
+
+
+/**
  * Movie Schema
  */
 const MovieSchema = new mongoose.Schema({
@@ -15,6 +26,7 @@ const MovieSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  genres: [GenreSchema],
   createdAt: {
     type: Date,
     default: Date.now
