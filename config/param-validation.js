@@ -32,7 +32,11 @@ module.exports = {
   createMovie: {
     body: {
       title: Joi.string().required(),
-      releaseDate: Joi.string().required()
+      releaseDate: {
+        month: Joi.string().required(),
+        date: Joi.string().required(),
+        year: Joi.string().required()
+      }
     }
   },
 
@@ -40,7 +44,11 @@ module.exports = {
   updateMovie: {
     body: {
       title: Joi.string().required(),
-      releaseDate: Joi.string().required()
+      releaseDate: {
+        month: Joi.string().required(),
+        date: Joi.string().required(),
+        year: Joi.string().required()
+      }
     },
     params: {
       movieId: Joi.string().hex().required()

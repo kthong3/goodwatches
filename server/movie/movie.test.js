@@ -21,7 +21,11 @@ after((done) => {
 describe('## Movie APIs', () => {
   let movie = {
     title: 'KK123',
-    releaseDate: '11/11/11',
+    releaseDate: {
+      month: '11',
+      date: '11',
+      year: '11'
+    },
     genres: [
       { name: 'horror' },
       { name: 'suspense' }
@@ -36,7 +40,9 @@ describe('## Movie APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.title).to.equal(movie.title);
-          expect(res.body.releaseDate).to.equal(movie.releaseDate);
+          expect(res.body.releaseDate.month).to.equal(movie.releaseDate.month);
+          expect(res.body.releaseDate.date).to.equal(movie.releaseDate.date);
+          expect(res.body.releaseDate.year).to.equal(movie.releaseDate.year);
           expect(res.body.genres[0]).to.include(movie.genres[0]);
           expect(res.body.genres[1]).to.include(movie.genres[1]);
           movie = res.body;
@@ -53,7 +59,9 @@ describe('## Movie APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.title).to.equal(movie.title);
-          expect(res.body.releaseDate).to.equal(movie.releaseDate);
+          expect(res.body.releaseDate.month).to.equal(movie.releaseDate.month);
+          expect(res.body.releaseDate.date).to.equal(movie.releaseDate.date);
+          expect(res.body.releaseDate.year).to.equal(movie.releaseDate.year);
           expect(res.body.genres[0]).to.include(movie.genres[0]);
           expect(res.body.genres[1]).to.include(movie.genres[1]);
           done();
@@ -82,7 +90,9 @@ describe('## Movie APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.title).to.equal('KK');
-          expect(res.body.releaseDate).to.equal(movie.releaseDate);
+          expect(res.body.releaseDate.month).to.equal(movie.releaseDate.month);
+          expect(res.body.releaseDate.date).to.equal(movie.releaseDate.date);
+          expect(res.body.releaseDate.year).to.equal(movie.releaseDate.year);
           expect(res.body.genres[0]).to.include(movie.genres[0]);
           expect(res.body.genres[1]).to.include(movie.genres[1]);
           done();
@@ -123,7 +133,9 @@ describe('## Movie APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.title).to.equal('KK');
-          expect(res.body.releaseDate).to.equal(movie.releaseDate);
+          expect(res.body.releaseDate.month).to.equal(movie.releaseDate.month);
+          expect(res.body.releaseDate.date).to.equal(movie.releaseDate.date);
+          expect(res.body.releaseDate.year).to.equal(movie.releaseDate.year);
           expect(res.body.genres[0]).to.include(movie.genres[0]);
           expect(res.body.genres[1]).to.include(movie.genres[1]);
           done();

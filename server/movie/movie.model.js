@@ -13,7 +13,6 @@ const GenreSchema = new mongoose.Schema({
   }
 });
 
-
 /**
  * Movie Schema
  */
@@ -23,8 +22,18 @@ const MovieSchema = new mongoose.Schema({
     required: true
   },
   releaseDate: {
-    type: String,
-    required: true
+    month: {
+      type: String,
+      required: true
+    },
+    date: {
+      type: String,
+      required: true
+    },
+    year: {
+      type: String,
+      required: true
+    }
   },
   genres: [GenreSchema],
   createdAt: {
