@@ -11,9 +11,9 @@ class JsonConverterTest {
     @Test
     void shouldConvertMovieToJson() {
         // Given
-        String expected  = "[{\"title\":\"Spirited Away\",\"releaseDate\":\"1995\"}]";
+        String expected = "[{\"title\":\"Spirited Away\",\"releaseDate\":\"1995\"}]";
         List<Movie> movieList = new LinkedList<>();
-        Movie movie = new Movie("Spirited Away","1995" );
+        Movie movie = new Movie("Spirited Away", "1995");
         movieList.add(movie);
         // When
 
