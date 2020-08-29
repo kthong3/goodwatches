@@ -9,5 +9,13 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public String getReleaseDate() {
+        return releaseDate;
+    }
 }
+
+

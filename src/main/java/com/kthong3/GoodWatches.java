@@ -18,24 +18,24 @@ public class GoodWatches extends HttpServlet {
         res.setContentType("application/json;charset=UTF-8");
 
         ServletOutputStream outputStream = res.getOutputStream();
-        outputStream.println("hello world");
+        outputStream.println("[{\"title\": \"Spirited Away\", \"releaseDate\": \"1995\"}]");
 
 
 
     }
 
-    public  convertMapToJson() {
-        ObjectMapper mapperObj = new ObjectMapper();
-        Map<String, String> inputMap = new HashMap<String, String>();
-        inputMap.put("Title", "Spirited Away");
-        inputMap.put("Release Date", "1995");
-        // convert map to JSON String
-        try {
-            String jsonResp = mapperObj.writeValueAsString(inputMap);
-            System.out.println(jsonResp);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+//    public  convertMapToJson() {
+//        ObjectMapper mapperObj = new ObjectMapper();
+//        Map<String, String> inputMap = new HashMap<String, String>();
+//        inputMap.put("Title", "Spirited Away");
+//        inputMap.put("Release Date", "1995");
+//        // convert map to JSON String
+//        try {
+//            String jsonResp = mapperObj.writeValueAsString(inputMap);
+//            System.out.println(jsonResp);
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
 }
