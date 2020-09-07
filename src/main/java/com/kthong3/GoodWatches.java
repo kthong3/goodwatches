@@ -1,41 +1,44 @@
 package com.kthong3;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GoodWatches extends HttpServlet {
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+    public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         res.setContentType("application/json;charset=UTF-8");
+        String uri = req.getRequestURI();
+        System.out.println(uri);
 
         ServletOutputStream outputStream = res.getOutputStream();
-        outputStream.println("[{\"title\": \"Spirited Away\", \"releaseDate\": \"1995\"}]");
+        MovieDao movieDao = new MovieDao();
 
+        Pattern pattern = Pattern.compile("movie\\/(\\d+)", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(uri);
 
+        if (uri.equals("/movies")) {
+            String moviesJSON = JsonConverter.parse(movieDao.getAll());
+            outputStream.println(moviesJSON);
+        } else if (matcher.find()) {
+            System.out.println(matcher.group(1));
+            Integer movieId = Integer.parseInt(matcher.group(1));
+            String response;
 
+            try {
+                response = JsonConverter.parse(movieDao.get(movieId));
+            }
+            catch (Exception e){
+                response = "{\"error\":\"movie with that id does not exist\"}";
+            }
+            outputStream.println(response);
+        } else {
+            outputStream.println("404");
+        }
     }
-
-//    public  convertMapToJson() {
-//        ObjectMapper mapperObj = new ObjectMapper();
-//        Map<String, String> inputMap = new HashMap<String, String>();
-//        inputMap.put("Title", "Spirited Away");
-//        inputMap.put("Release Date", "1995");
-//        // convert map to JSON String
-//        try {
-//            String jsonResp = mapperObj.writeValueAsString(inputMap);
-//            System.out.println(jsonResp);
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//    }
 }

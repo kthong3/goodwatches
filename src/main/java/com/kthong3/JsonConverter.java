@@ -16,4 +16,8 @@ public class JsonConverter {
 
         return String.format("[%s]", moviesJson);
     }
+
+    static public String parse(Movie movie) {
+        return movieToJson.apply(movie);
+    }
 }
